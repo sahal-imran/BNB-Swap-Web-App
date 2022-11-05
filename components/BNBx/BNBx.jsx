@@ -12,9 +12,14 @@ import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import Tooltip from "@mui/material/Tooltip";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { useState } from "react";
 
 function BNBx() {
   const { Hamburgar, SetHamBurgar } = useContext(AppContext);
+  const [Stake, SetStake] = useState(true);
+  const [UnStake, SetUnStake] = useState(false);
+  const [Withdraw, SetWithdraw] = useState(false);
   return (
     <>
       <Box
@@ -296,6 +301,8 @@ function BNBx() {
               </Typography>
             </Box>
           </Box>
+
+          {/* BNB info bar */}
           <Box
             sx={{
               flexGrow: 1,
@@ -346,13 +353,7 @@ function BNBx() {
                         alignItems: "center",
                       }}
                     >
-                      <Image
-                        src={"/assets/info.svg"}
-                        alt="ico"
-                        width={14}
-                        height={14}
-                        objectFit="contain"
-                      />
+                      <AiOutlineInfoCircle color="rgba(0,0,0,0.6)" />
                     </Box>
                   </Tooltip>
                 </Typography>
@@ -432,13 +433,7 @@ function BNBx() {
                         alignItems: "center",
                       }}
                     >
-                      <Image
-                        src={"/assets/info.svg"}
-                        alt="ico"
-                        width={14}
-                        height={14}
-                        objectFit="contain"
-                      />
+                      <AiOutlineInfoCircle color="rgba(0,0,0,0.6)" />
                     </Box>
                   </Tooltip>
                 </Typography>
@@ -512,13 +507,7 @@ function BNBx() {
                         alignItems: "center",
                       }}
                     >
-                      <Image
-                        src={"/assets/info.svg"}
-                        alt="ico"
-                        width={14}
-                        height={14}
-                        objectFit="contain"
-                      />
+                      <AiOutlineInfoCircle color="rgba(0,0,0,0.6)" />
                     </Box>
                   </Tooltip>
                 </Typography>
@@ -546,6 +535,184 @@ function BNBx() {
                 </Typography>
               </Grid>
             </Grid>
+          </Box>
+
+          <Box
+            sx={{
+              width: "100%",
+              width: "100%",
+              background: "white",
+              borderRadius: "8px",
+              p: { md: 2, xs: 1 },
+              mt: 4,
+              display: "flex",
+              justifyContent: "start",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            {/* Toggle buttons */}
+            <Box
+              sx={{
+                width: { md: "800px", xs: "100%" },
+                m: "auto",
+              }}
+            >
+              <Grid container spacing={0}>
+                <Grid
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  xs={3.8}
+                >
+                  <Typography
+                    onClick={() => {
+                      SetStake(true);
+                      SetUnStake(false);
+                      SetWithdraw(false);
+                    }}
+                    sx={
+                      Stake
+                        ? {
+                            fontFamily: "Lato",
+                            fontSize: "18px",
+                            fontWeight: 800,
+                            color: "rgba(0,0,0,1)",
+                            textTransform: "capitalize",
+                            cursor: "pointer",
+                          }
+                        : {
+                            fontFamily: "Lato",
+                            fontSize: "18px",
+                            fontWeight: 800,
+                            color: "rgba(0,0,0,0.6)",
+                            textTransform: "capitalize",
+                            cursor: "pointer",
+                          }
+                    }
+                  >
+                    Stake
+                  </Typography>
+                </Grid>
+
+                {/* Divider */}
+                <Grid
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  md={0.3}
+                >
+                  <Divider
+                    sx={{ height: "30px" }}
+                    orientation="vertical"
+                    variant="middle"
+                    flexItem
+                  />
+                </Grid>
+
+                <Grid
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  xs={3.8}
+                >
+                  <Typography
+                    onClick={() => {
+                      SetStake(false);
+                      SetUnStake(true);
+                      SetWithdraw(false);
+                    }}
+                    sx={
+                      UnStake
+                        ? {
+                            fontFamily: "Lato",
+                            fontSize: "18px",
+                            fontWeight: 800,
+                            color: "rgba(0,0,0,1)",
+                            textTransform: "capitalize",
+                            cursor: "pointer",
+                          }
+                        : {
+                            fontFamily: "Lato",
+                            fontSize: "18px",
+                            fontWeight: 800,
+                            color: "rgba(0,0,0,0.6)",
+                            textTransform: "capitalize",
+                            cursor: "pointer",
+                          }
+                    }
+                  >
+                    Unstake
+                  </Typography>
+                </Grid>
+
+                {/* Divider */}
+                <Grid
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  md={0.3}
+                >
+                  <Divider
+                    sx={{ height: "30px" }}
+                    orientation="vertical"
+                    variant="middle"
+                    flexItem
+                  />
+                </Grid>
+
+                <Grid
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  xs={3.8}
+                >
+                  <Typography
+                    onClick={() => {
+                      SetStake(false);
+                      SetUnStake(false);
+                      SetWithdraw(true);
+                    }}
+                    sx={
+                      Withdraw
+                        ? {
+                            fontFamily: "Lato",
+                            fontSize: "18px",
+                            fontWeight: 800,
+                            color: "rgba(0,0,0,1)",
+                            textTransform: "capitalize",
+                            cursor: "pointer",
+                          }
+                        : {
+                            fontFamily: "Lato",
+                            fontSize: "18px",
+                            fontWeight: 800,
+                            color: "rgba(0,0,0,0.6)",
+                            textTransform: "capitalize",
+                            cursor: "pointer",
+                          }
+                    }
+                  >
+                    Withdraw
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
           </Box>
         </Box>
       </Box>
