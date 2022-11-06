@@ -14,12 +14,25 @@ import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { useState } from "react";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+
+// components
+
+import Coin_Info_Card from "../Common/Coin_Info_Card";
+import Coin_Detail_Card from "../Common/Coin_Detail_Card";
+import StakeTab from "../Common/StakeTab";
+import UnstakeTab from "../Common/UnstakeTab";
+import Withdrawal from "../Common/Withdrawal";
 
 function BNBx() {
   const { Hamburgar, SetHamBurgar } = useContext(AppContext);
   const [Stake, SetStake] = useState(true);
   const [UnStake, SetUnStake] = useState(false);
   const [Withdraw, SetWithdraw] = useState(false);
+
+  const [Amount, Set_Amount] = useState(null);
+
   return (
     <>
       <Box
@@ -207,339 +220,18 @@ function BNBx() {
           }}
         >
           {/* Coin info bar */}
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Image
-              src={"/assets/bnb.svg"}
-              alt={"logo"}
-              width={70}
-              height={70}
-              objectFit="contain"
-            />
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "start",
-                flexDirection: "column",
-                ml: 2,
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontSize: "1.6rem",
-                    lineHeight: "",
-                    fontWeight: 700,
-                    color: "black",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  BNB
-                </Typography>
-                <Tooltip title="Click to know more on audits" arrow>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      ml: 2,
-                      borderRadius: "8px",
-                      background: "white",
-                      px: 1,
-                      py: 0.5,
-                      boxShadow: "none",
-                      "&:hover": {
-                        boxShadow: "none",
-                        background: "white",
-                      },
-                    }}
-                  >
-                    <VerifiedUserIcon
-                      sx={{ fontSize: "16px", color: "#45BE21" }}
-                    />
-                    <Typography
-                      sx={{
-                        fontFamily: "Lato",
-                        fontSize: "16px",
-                        lineHeight: "",
-                        fontWeight: 500,
-                        color: "rgba(0,0,0,0.8)",
-                        textTransform: "capitalize",
-                        ml: 0.5,
-                      }}
-                    >
-                      Safe & secured
-                    </Typography>
-                  </Button>
-                </Tooltip>
-              </Box>
-              <Typography
-                sx={{
-                  fontFamily: "Lato",
-                  fontSize: "16px",
-                  fontWeight: 500,
-                  color: "black",
-                  textTransform: "capitalize",
-                  mt: 1,
-                }}
-              >
-                Stake BNB & use BNBx in DeFi while earning staking rewards
-              </Typography>
-            </Box>
-          </Box>
+          <Coin_Info_Card Name={"BNB"} Icon={"/assets/bnb.svg"} />
 
           {/* BNB info bar */}
+          <Coin_Detail_Card
+            TVL={"57,595"}
+            APY={"5.92"}
+            Exchange_Rate={"1.0448 "}
+          />
+
+          {/* Swap section */}
           <Box
             sx={{
-              flexGrow: 1,
-              width: "100%",
-              background: "white",
-              borderRadius: "8px",
-              p: 2,
-              mt: 4,
-            }}
-          >
-            <Grid container columnSpacing={0} rowSpacing={{ md: 0, xs: 2 }}>
-              <Grid
-                sx={{
-                  display: "flex",
-                  justifyContent: { md: "center", xs: "space-between" },
-                  alignItems: "center",
-                  flexDirection: { md: "column", xs: "row" },
-                  width: "100%",
-                }}
-                item
-                md={3.8}
-                xs={12}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    fontWeight: 500,
-                    color: "rgba(0,0,0,0.6)",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  TVL
-                  <Tooltip
-                    placement="top"
-                    title="Total BNB staked with Stader"
-                    arrow
-                  >
-                    <Box
-                      sx={{
-                        ml: 0.5,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <AiOutlineInfoCircle color="rgba(0,0,0,0.6)" />
-                    </Box>
-                  </Tooltip>
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    fontWeight: 600,
-                    color: "rgba(0,0,0,1)",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    mt: { md: 2 },
-                  }}
-                >
-                  57,586{" "}
-                  <Box
-                    component={"span"}
-                    sx={{ color: "rgba(0,0,0,0.6)", fontWeight: 500, ml: 0.5 }}
-                  >
-                    BNB
-                  </Box>
-                </Typography>
-              </Grid>
-
-              {/* Divider */}
-              <Grid
-                sx={{
-                  display: { md: "flex", xs: "none" },
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                item
-                md={0.3}
-              >
-                <Divider orientation="vertical" variant="middle" flexItem />
-              </Grid>
-
-              <Grid
-                sx={{
-                  display: "flex",
-                  justifyContent: { md: "center", xs: "space-between" },
-                  alignItems: "center",
-                  flexDirection: { md: "column", xs: "row" },
-                  width: "100%",
-                }}
-                item
-                md={3.8}
-                xs={12}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    fontWeight: 500,
-                    color: "rgba(0,0,0,0.6)",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  APY
-                  <Tooltip
-                    placement="top"
-                    title="Estimated Annualized Retuen"
-                    arrow
-                  >
-                    <Box
-                      sx={{
-                        ml: 0.5,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <AiOutlineInfoCircle color="rgba(0,0,0,0.6)" />
-                    </Box>
-                  </Tooltip>
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    fontWeight: 600,
-                    color: "rgba(0,0,0,1)",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    mt: { md: 2 },
-                  }}
-                >
-                  5.65 %
-                </Typography>
-              </Grid>
-
-              {/* Divider */}
-              <Grid
-                sx={{
-                  display: { md: "flex", xs: "none" },
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                item
-                md={0.3}
-              >
-                <Divider orientation="vertical" variant="middle" flexItem />
-              </Grid>
-
-              <Grid
-                sx={{
-                  display: "flex",
-                  justifyContent: { md: "center", xs: "space-between" },
-                  alignItems: "center",
-                  flexDirection: { md: "column", xs: "row" },
-                  width: "100%",
-                }}
-                item
-                md={3.8}
-                xs={12}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    fontWeight: 500,
-                    color: "rgba(0,0,0,0.6)",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  BNB/BNBx Exchange Rate
-                  <Tooltip
-                    placement="top"
-                    title="Actual exchange rate may vary from the displayed value"
-                    arrow
-                  >
-                    <Box
-                      sx={{
-                        ml: 0.5,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                    >
-                      <AiOutlineInfoCircle color="rgba(0,0,0,0.6)" />
-                    </Box>
-                  </Tooltip>
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontSize: "16px",
-                    lineHeight: "24px",
-                    fontWeight: 600,
-                    color: "rgba(0,0,0,1)",
-                    textTransform: "capitalize",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    mt: { md: 2 },
-                  }}
-                >
-                  1.0446{" "}
-                  <Box
-                    component={"span"}
-                    sx={{ color: "rgba(0,0,0,0.6)", fontWeight: 500, ml: 0.5 }}
-                  >
-                    BNB
-                  </Box>
-                </Typography>
-              </Grid>
-            </Grid>
-          </Box>
-
-          <Box
-            sx={{
-              width: "100%",
               width: "100%",
               background: "white",
               borderRadius: "8px",
@@ -713,6 +405,32 @@ function BNBx() {
                 </Grid>
               </Grid>
             </Box>
+
+            {/* Stake */}
+            {Stake && (
+              <StakeTab
+                BNB_Amount={"0"}
+                BNBx_Amount={"0"}
+                Amount={Amount}
+                Change_input_f={Set_Amount}
+                You_get={0}
+                isBNBx={true}
+              />
+            )}
+
+            {/* Unstake */}
+            {UnStake && (
+              <UnstakeTab
+                Balance={"0"}
+                Amount={Amount}
+                Change_input_f={Set_Amount}
+                You_get={0}
+                isBNBx={true}
+              />
+            )}
+
+            {/* Widthdrawal */}
+            {Withdraw && <Withdrawal />}
           </Box>
         </Box>
       </Box>

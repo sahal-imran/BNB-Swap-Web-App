@@ -152,7 +152,7 @@ function Navigation() {
                       fontWeight: 600,
                       color: "rgba(0,0,0,1)",
                       cursor: "pointer",
-                      mt: 2,
+                      mt: 1,
                       ml: 6,
                     }
                   : {
@@ -474,7 +474,7 @@ function Navigation() {
                         fontWeight: 600,
                         color: "rgba(0,0,0,1)",
                         cursor: "pointer",
-                        mt: 2,
+                        mt: 1,
                         ml: 6,
                       }
                     : {
